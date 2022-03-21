@@ -1,10 +1,8 @@
 import uuid
 
-from flask_sqlalchemy import SQLAlchemy
+from app import db
 
 from sqlalchemy.dialects.postgresql import UUID
-
-db = SQLAlchemy()
 
 
 class Role(db.Model):
