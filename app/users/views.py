@@ -1,8 +1,8 @@
 from flask import Blueprint
 
-blueprint = Blueprint("users", __name__, url_prefix="/users")
+blueprint = Blueprint("users", __name__, url_prefix="/user")
 
 
 @blueprint.route("/")
-def index_page():
+def user_page():
     return "Users page"

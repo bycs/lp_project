@@ -5,4 +5,4 @@ blueprint = Blueprint("home", __name__)
 
 @blueprint.route("/")
 def index_page():
-    return "Home"
+    return "Home page (index)"

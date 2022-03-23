@@ -9,13 +9,10 @@ services:
     volumes:
       - .:/source/
     working_dir: /source/
-    command: bash -c "
-      gunicorn -w $APP_WORKER
-      -b $APP_HOST:$APP_PORT
-      wsgi:app
-      "
+    command: gunicorn --bind 0.0.0.0:8080 wsgi:app
+
     ports:
-      - "4000:4000"
+      - "8080:8080"
     depends_on:
       - postgres
   postgres:
