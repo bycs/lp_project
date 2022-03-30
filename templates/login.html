@@ -11,6 +11,10 @@
         <p>
             {{ form.password.label }}<br>{{ form.password() }}
         </p>
+        <div class="form-group form-check">
+            {{ form.remember_user }}
+            {{ form.remember_user.label() }}
+        </div>
         <p>{{ form.submit }}</p>
     </form>
 
