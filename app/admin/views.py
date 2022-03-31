@@ -1,6 +1,6 @@
-from flask import Blueprint
-
 from app.admin.decorators import admin_required
+
+from flask import Blueprint
 
 blueprint = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -9,4 +9,3 @@ blueprint = Blueprint("admin", __name__, url_prefix="/admin")
 @admin_required
 def admin_page():
     return "Добро пожаловать, Админ"
-
