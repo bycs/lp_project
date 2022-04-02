@@ -1,8 +1,8 @@
 import sys
 from getpass import getpass
 
-from app import db
-from app.users.models import User
+from app.config import db
+from app.user.models import User
 
 from wsgi import app
 

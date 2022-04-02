@@ -1,12 +1,9 @@
-from app.admin.views import blueprint as admin
-from app.articles.views import blueprint as articles
+from app.blueprints import init_blueprints
 from app.config import APP_NAME, APP_SECRET_KEY, DB_URI, DEBUG
-from app.db import db
-from app.users.models import User
-from app.users.views import blueprint as users
-from app.views import blueprint as home
+from app.config import db
+from app.user.models import User
 
-from flask import Flask
+from flask import Flask, render_template
 
 from flask_login import LoginManager
 
@@ -21,10 +18,7 @@ def create_app():
 
     app.debug = DEBUG
 
-    app.register_blueprint(admin)
-    app.register_blueprint(home)
-    app.register_blueprint(articles)
-    app.register_blueprint(users)
+    init_blueprints(app)
 
     db.init_app(app)
     migrate = Migrate()
@@ -32,10 +26,18 @@ def create_app():
 
     login_manager = LoginManager()
     login_manager.init_app(app)
-    login_manager.login_view = "home.login_page"
+    login_manager.login_view = "user.login_page"
 
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(user_id)
 
+    @app.route("/")
+    def index_page():
+        title = APP_NAME
+        return render_template("index.html", page_title=title)
+
     return app
+
+
+app = create_app()

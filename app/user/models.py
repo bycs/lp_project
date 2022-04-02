@@ -1,6 +1,6 @@
 import uuid
 
-from app import db
+from app.config import db
 
 from flask_login import UserMixin
 
@@ -16,7 +16,7 @@ class Role(db.Model):
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = "users"
+    __tablename__ = "user"
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4())
     email = db.Column(db.String(30), unique=True, nullable=False, index=True)
     password = db.Column(db.String(128), nullable=False)
@@ -50,6 +50,6 @@ class RoleUser(db.Model):
     )
     user_id = db.Column(
         UUID(as_uuid=True),
-        db.ForeignKey("users.id", ondelete="CASCADE"),
+        db.ForeignKey("user.id", ondelete="CASCADE"),
         nullable=False,
     )

@@ -11,7 +11,7 @@ class RegisterForm(FlaskForm):
         "Повтор пароля", validators=[DataRequired(), EqualTo("password")]
     )
     first_name = StringField("Имя", validators=[DataRequired()])
-    middle_name = StringField("Отчество", validators=[DataRequired()])
+    middle_name = StringField("Отчество")
     last_name = StringField("Фамилия", validators=[DataRequired()])
     submit = SubmitField("Зарегистрироваться")
 

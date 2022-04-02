@@ -1,6 +1,6 @@
 import uuid
 
-from app import db
+from app.config import db
 
 from sqlalchemy.dialects.postgresql import UUID
 
@@ -19,7 +19,7 @@ class Article(db.Model):
     is_show = db.Column(db.Boolean, default=False, nullable=False)
     author_id = db.Column(
         UUID(as_uuid=True),
-        db.ForeignKey("users.id", ondelete="CASCADE"),
+        db.ForeignKey("user.id", ondelete="CASCADE"),
         nullable=False,
     )
 
