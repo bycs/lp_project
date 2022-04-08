@@ -37,14 +37,14 @@ def upgrade():
         sa.Column("is_admin", sa.Boolean(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index(op.f("ix_user_email"), "user", ["email"], unique=True)
+    op.create_index(op.f("ix_users_email"), "users", ["email"], unique=True)
     op.create_table(
         "roles_users",
         sa.Column("id", sa.Integer(), nullable=False),
         sa.Column("role_id", sa.Integer(), nullable=False),
         sa.Column("user_id", postgresql.UUID(as_uuid=True), nullable=False),
         sa.ForeignKeyConstraint(["role_id"], ["roles.id"], ondelete="CASCADE"),
-        sa.ForeignKeyConstraint(["user_id"], ["user.id"], ondelete="CASCADE"),
+        sa.ForeignKeyConstraint(["user_id"], ["users.id"], ondelete="CASCADE"),
         sa.PrimaryKeyConstraint("id"),
     )
     # ### end Alembic commands ###
