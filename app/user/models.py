@@ -16,7 +16,7 @@ class Role(db.Model):
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = "user"
+    __tablename__ = "users"
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4())
     email = db.Column(db.String(30), unique=True, nullable=False, index=True)
     password = db.Column(db.String(128), nullable=False)
