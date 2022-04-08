@@ -1,21 +1,30 @@
 {% extends "base.html" %}
+
 {% block content %}
 
-
-
-    <form action="{{ url_for('user.process_login') }}" method="POST">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.email.label }}<br>{{ form.email() }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>{{ form.password() }}
-        </p>
-        <div class="form-group form-check">
-            {{ form.remember_user }}
-            {{ form.remember_user.label() }}
+    <div class="row">
+        <div class="col-4">
+            <form action="{{ url_for('user.process_login') }}" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-floating mb-3">
+                    {{ form.email.label }}
+                    {{ form.email() }}
+                </div>
+                <div class="form-floating">
+                    {{ form.password.label }}
+                    {{ form.password() }}
+                </div>
+                <div class="form-group form-check">
+                    {{ form.remember_user }}
+                    {{ form.remember_user.label() }}
+                </div>
+                {{ form.submit }}
+            </form>
         </div>
-        <p>{{ form.submit }}</p>
-    </form>
+    </div>
+
+    <div class="col-8">
+
+    </div>
 
 {% endblock %}

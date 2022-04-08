@@ -1,29 +1,41 @@
 {% extends "base.html" %}
+
 {% block content %}
+    <div class="row">
+        <div class="col-4">
+            <form action="{{ url_for('user.process_register') }}" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-floating mb-3">
+                    {{ form.email.label }}
+                    {{ form.email() }}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.password.label }}
+                    {{ form.password() }}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.password2.label }}
+                    {{ form.password2() }}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.first_name.label }}
+                    {{ form.first_name() }}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.middle_name.label }}
+                    {{ form.middle_name() }}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.last_name.label }}
+                    {{ form.last_name() }}
+                </div>
+                {{ form.submit }}
+            </form>
+        </div>
+    </div>
 
+    <div class="col-8">
 
-
-    <form action="{{ url_for('user.process_register') }}" method="POST">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.email.label }}<br>{{ form.email() }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>{{ form.password() }}
-        </p>
-        <p>
-            {{ form.password2.label }}<br>{{ form.password2() }}
-        </p>
-                <p>
-            {{ form.first_name.label }}<br>{{ form.first_name() }}
-        </p>
-                <p>
-            {{ form.middle_name.label }}<br>{{ form.middle_name() }}
-        </p>
-                <p>
-            {{ form.last_name.label }}<br>{{ form.last_name() }}
-        </p>
-        <p>{{ form.submit }}</p>
-    </form>
+    </div>
 
 {% endblock %}
