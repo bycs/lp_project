@@ -9,12 +9,13 @@ blueprint = Blueprint("admin", __name__, url_prefix="/admin")
 @blueprint.route("/")
 @admin_required
 def admin_page():
-    return "Добро пожаловать, Админ"
+    title = "Панель управления"
+    return render_template("admin/index.html", page_title=title)
 
 
 @blueprint.route("/users")
 @admin_required
 def users_list():
     users = get_all_users()
-    title = "Пользователи"
+    title = "Список пользователей"
     return render_template("admin/users.html", page_title=title, users=users)
