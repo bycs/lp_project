@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="{{ url_for('admin.process_add_role') }}" method="POST" class="col-4">
+        {{ form.hidden_tag() }}
+        <div class="form-floating mb-3">
+            {{ form.role.label }}
+            {{ form.role() }}
+        </div>
+        <div class="form-floating mb-3">
+            {{ form.role2.label }}
+            {{ form.role2() }}
+        </div>
+        {{ form.submit }}
+    </form>
+
+{% endblock %}
+
+{% block content_other %}
+
+    {% include 'admin/menu.html' %}
+
+{% endblock %}
