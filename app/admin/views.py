@@ -1,7 +1,7 @@
 from app.admin.decorators import admin_required
 from app.admin.utils import get_all_users, verification_user
 
-from flask import Blueprint, flash, render_template, request, redirect, url_for
+from flask import Blueprint, flash, redirect, render_template, request, url_for
 
 blueprint = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -26,14 +26,16 @@ def users_list():
 def verification_users_page():
     users = get_all_users()
     title = "Подтверждение пользователей"
-    return render_template("admin/verification_users.html", page_title=title, users=users)
+    return render_template(
+        "admin/verification_users.html", page_title=title, users=users
+    )
 
 
 @admin_required
 @blueprint.route("/process_verification_users")
 def process_verification_users():
-    user_id = request.values.get('user_id')
-    status = bool(request.values.get('is_verification'))
+    user_id = request.values.get("user_id")
+    status = bool(request.values.get("is_verification"))
     verification_user(user_id, status)
     flash("Статус пользователя успешно изменен")
     return redirect(url_for("admin.users_list"))

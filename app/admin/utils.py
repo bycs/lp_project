@@ -8,7 +8,9 @@ def get_all_users():
 
 
 def verification_user(user_id, status):
-    db.session.query(User).filter(User.id == user_id).update({'is_verification': status})
+    db.session.query(User).filter(User.id == user_id).update(
+        {"is_verification": status}
+    )
     db.session.commit()
 
 
