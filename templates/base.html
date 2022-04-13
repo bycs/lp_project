@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
      <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,19 +19,20 @@
 <body>
     {% include 'menu.html' %}
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="alert alert-warning" role="alert">
-            {% for message in messages %}
-                {{ message }}<br>
-            {% endfor %}
-        </div>
-        {% endif %}
-    {% endwith %}
+    {% include 'messages.html' %}
 
     <div class="container">
         <h1>{{ page_title }}</h1>
-        {% block content %}{% endblock %}
+
+        <div class="row">
+            <div class="col-8">
+                {% block content %}{% endblock %}
+            </div>
+
+            <div class="col-4">
+                {% block content_other %}{% endblock %}
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->

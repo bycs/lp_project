@@ -24,7 +24,7 @@ def process_register():
 
     if form.validate_on_submit():
         create_user(form)
-        flash("Вы успешно зарегистрировались")
+        flash("Вы успешно зарегистрировались :)")
         return redirect(url_for("user.login_page"))
 
     flash("Исправте ошибки в форме регистрации!")
@@ -51,7 +51,7 @@ def process_login():
             flash("Авторизация успешно пройдена")
             return redirect(url_for("index_page"))
 
-    flash("Неправильный e-mail или пароль!")
+    flash("Неправильный email или пароль!")
     return redirect(url_for("user.login_page"))
 
 
