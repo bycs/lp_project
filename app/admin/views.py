@@ -27,9 +27,7 @@ def users_list():
 def verification_users_page():
     users = get_all_users()
     title = "Подтверждение пользователей"
-    return render_template(
-        "admin/verification_users.html", page_title=title, users=users
-    )
+    return render_template("admin/verification_users.html", page_title=title, users=users)
 
 
 @admin_required

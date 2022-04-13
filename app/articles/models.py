@@ -30,9 +30,7 @@ class Article(db.Model):
 class AccessArticlesRule(db.Model):
     __tablename__ = "access_articles_rules"
     id = db.Column(db.Integer, primary_key=True)
-    role_id = db.Column(
-        db.Integer, db.ForeignKey("roles.id", ondelete="CASCADE"), nullable=False
-    )
+    role_id = db.Column(db.Integer, db.ForeignKey("roles.id", ondelete="CASCADE"), nullable=False)
     article_id = db.Column(
         UUID(as_uuid=True),
         db.ForeignKey("articles.id", ondelete="CASCADE"),
