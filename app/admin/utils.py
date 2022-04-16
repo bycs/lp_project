@@ -1,5 +1,5 @@
 from app.config import db
-from app.user.models import User
+from app.user.models import Role, User
 
 
 def get_all_users():
@@ -8,11 +8,12 @@ def get_all_users():
 
 
 def verification_user(user_id, status):
-    db.session.query(User).filter(User.id == user_id).update(
-        {"is_verification": status}
-    )
+    db.session.query(User).filter(User.id == user_id).update({"is_verification": status})
     db.session.commit()
 
 
-if __name__ == "__main__":
-    get_all_users()
+def create_role(form):
+    new_role = Role(role_name=form.role.data)
+
+    db.session.add(new_role)
+    db.session.commit()

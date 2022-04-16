@@ -45,11 +45,9 @@ class User(db.Model, UserMixin):
 class RoleUser(db.Model):
     __tablename__ = "roles_users"
     id = db.Column(db.Integer, primary_key=True)
-    role_id = db.Column(
-        db.Integer, db.ForeignKey("roles.id", ondelete="CASCADE"), nullable=False
-    )
+    role_id = db.Column(db.Integer, db.ForeignKey("roles.id", ondelete="CASCADE"), nullable=False)
     user_id = db.Column(
         UUID(as_uuid=True),
-        db.ForeignKey("user.id", ondelete="CASCADE"),
+        db.ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False,
     )
